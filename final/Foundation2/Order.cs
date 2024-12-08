@@ -4,44 +4,44 @@ using System.Text;
 
 public class Order
 {
-    private List<Product> productList;
-    private Customer orderCustomer;
+    private List<Product> _productList;
+    private Customer _orderCustomer;
 
     public Order(Customer orderCustomer)
     {
-        this.productList = new List<Product>();
-        this.orderCustomer = orderCustomer;
+        _productList = new List<Product>();
+        _orderCustomer = orderCustomer;
     }
 
     public void AddProduct(Product product)
     {
-        productList.Add(product);
+        _productList.Add(product);
     }
 
     public decimal ComputeTotal()
     {
         decimal subtotal = 0;
-        foreach (var product in productList)
+        foreach (var product in _productList)
         {
             subtotal += product.GetTotalPrice();
         }
 
-        decimal shippingFee = orderCustomer.ResidesInUSA() ? 5 : 30;
+        decimal shippingFee = _orderCustomer.ResidesInUSA() ? 5 : 30;
         return subtotal + shippingFee;
     }
 
     public string GeneratePackingInfo()
     {
         StringBuilder packingInfo = new StringBuilder();
-        foreach (var product in productList)
+        foreach (var product in _productList)
         {
-            packingInfo.AppendLine($"Item: {product.ProductName}, Code: {product.Code}");
+            packingInfo.AppendLine($"Item: {product.GetProductName()}, Code: {product.GetCode()}");
         }
         return packingInfo.ToString();
     }
 
     public string GenerateShippingInfo()
     {
-        return $"Recipient: {orderCustomer.FullName}\nShipping Address: {orderCustomer.HomeAddress}";
+        return $"Recipient: {_orderCustomer.GetFullName()}\nShipping Address: {_orderCustomer.GetHomeAddress()}";
     }
 }

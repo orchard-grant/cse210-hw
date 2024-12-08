@@ -1,31 +1,47 @@
 public class Video
 {
-    public string Title { get; set; }
-    public string Creator { get; set; }
-    public int Duration { get; set; }
-    private List<Comment> Comments { get; set; }
+    private string _title { get; set; }
+    private string _creator { get; set; }
+    private int _duration { get; set; }
+    private List<Comment> _comments { get; set; }
 
     public Video(string title, string creator, int duration)
     {
-        Title = title;
-        Creator = creator;
-        Duration = duration;
-        Comments = new List<Comment>();
+        _title = title;
+        _creator = creator;
+        _duration = duration;
+        _comments = new List<Comment>();
+    }
+
+    // Public getter methods for private attributes
+    public string GetTitle()
+    {
+        return _title;
+    }
+
+    public string GetCreator()
+    {
+        return _creator;
+    }
+
+    public int GetDuration()
+    {
+        return _duration;
     }
 
     public void AddComment(string name, string text)
     {
-        Comments.Add(new Comment(name, text));
+        _comments.Add(new Comment(name, text));
     }
 
     public int GetNumberOfComments()
     {
-        return Comments.Count;
+        return _comments.Count;
     }
 
     public List<Comment> GetComments()
     {
-        return Comments;
+        return _comments;
     }
 }
 

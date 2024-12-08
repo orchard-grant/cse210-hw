@@ -1,19 +1,19 @@
 public class Customer
 {
-    private string fullName;
-    private Address homeAddress;
+    private string _fullName;
+    private Address _homeAddress;
 
     public Customer(string fullName, Address homeAddress)
     {
-        this.fullName = fullName;
-        this.homeAddress = homeAddress;
+        _fullName = fullName;
+        _homeAddress = homeAddress;
     }
 
-    public string FullName => fullName;
-    public Address HomeAddress => homeAddress;
+    public string GetFullName() => _fullName;
+    public Address GetHomeAddress() => _homeAddress;
 
     public bool ResidesInUSA()
     {
-        return homeAddress.LocatedInUSA();
+        return _homeAddress.LocatedInUSA();
     }
 }

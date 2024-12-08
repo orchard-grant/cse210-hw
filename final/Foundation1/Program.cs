@@ -24,15 +24,17 @@ public class Program
 
         foreach (Video video in videos)
         {
-            Console.WriteLine("Title: " + video.Title);
-            Console.WriteLine("Author: " + video.Creator);
-            Console.WriteLine("Length: " + video.Duration + " seconds");
+            // Updated to use getter methods instead of direct attribute access
+            Console.WriteLine("Title: " + video.GetTitle());
+            Console.WriteLine("Author: " + video.GetCreator());
+            Console.WriteLine("Length: " + video.GetDuration() + " seconds");
             Console.WriteLine("Number of Comments: " + video.GetNumberOfComments());
 
             Console.WriteLine("Comments:");
             foreach (Comment comment in video.GetComments())
             {
-                Console.WriteLine($"- {comment.Username}: {comment.Feedback}");
+                // Updated to use getter methods in the Comment class
+                Console.WriteLine($"- {comment.GetUsername()}: {comment.GetFeedback()}");
             }
 
             Console.WriteLine();

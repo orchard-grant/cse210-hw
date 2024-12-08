@@ -1,25 +1,25 @@
 public class Product
 {
-    private string productName;
-    private string code;
-    private decimal unitPrice;
-    private int count;
+    private string _productName;
+    private string _code;
+    private decimal _unitPrice;
+    private int _count;
 
     public Product(string productName, string code, decimal unitPrice, int count)
     {
-        this.productName = productName;
-        this.code = code;
-        this.unitPrice = unitPrice;
-        this.count = count;
+        _productName = productName;
+        _code = code;
+        _unitPrice = unitPrice;
+        _count = count;
     }
 
-    public string ProductName => productName;
-    public string Code => code;
-    public decimal UnitPrice => unitPrice;
-    public int Count => count;
+    public string GetProductName() => _productName;
+    public string GetCode() => _code;
+    public decimal GetUnitPrice() => _unitPrice;
+    public int GetCount() => _count;
 
     public decimal GetTotalPrice()
     {
-        return unitPrice * count;
+        return _unitPrice * _count;
     }
 }
